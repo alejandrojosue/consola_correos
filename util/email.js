@@ -40,9 +40,14 @@ export const inputEmail = async () => {
     recipients = await readInput('Ingrese los correo destinatarios:')
     const { invalidEmails, validEmails } = await emailValidate({ recipients })
     if (invalidEmails.length > 0) {
-      console.warn(`Los correos ${invalidEmails.join(',').red} no son válidos`)
+      console.log(`Los correos ${invalidEmails.join(',').red} no son válidos`)
       opt = await emailRecepientsError()
+      if (validEmails.length < 1 && opt === 'b') {
+        console.log('No hay correos válidos, por favor ingrese destinatarios.');
+        opt = 'a'
+      }
     }
+
     if (opt === 'b') recipients = validEmails.join(',')
   } while (opt === 'a')
   if (opt === 'c') return null;
@@ -54,5 +59,5 @@ export const inputEmail = async () => {
 export const inputFileEmail = async () => {
   let file = []
 
-  return {file}
+  return { file }
 }
