@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "colors": "^1.4.0",
+    "dotenv": "^17.3.1",
     "inquirer": "^8.2.0",
     "nodemailer": "^6.9.16",
     "ora": "^8.1.1",

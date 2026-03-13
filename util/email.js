@@ -3,18 +3,21 @@ import ora from 'ora'
 import { readInput, emailRecepientsError, confirm } from '../helpers/inquirer.js'
 import { emailValidate } from '../helpers/emailValidate.js';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 const config = {
   host: 'smtp.gmail.com',
   port: 587,
   auth: {
-    user: 'sistemaoperativoindependiente@gmail.com',
-    pass: 'biyvxblpoqqutson'
+    user: process.env.EMAIL,
+    pass: process.env.PASS_EMAIL
   }
 };
 
 export const send = async ({ subject = '', body = '', recipients = '', attachments = [] }) => {
   const message = {
-    from: 'sistemaoperativoindependiente@gmail.com',
+    from: process.env.EMAIL,
     to: recipients,
     subject,
     text: body,
