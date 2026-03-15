@@ -104,7 +104,7 @@ const emailFiles = async () => {
     const choices = files.map((file, index)=>{
         
         return {
-            value: {patn: path.join(process.cwd(), 'resource', file), filename: file},
+            value: {path: path.join(process.cwd(), 'resource', file), filename: file},
             name: (index+1).toString().green + `. ${file}`
         }
     })
